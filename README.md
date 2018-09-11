@@ -1,2 +1,1 @@
-# cssd-theme
-WordPress Templates
+# CSSDrive Templates for WordPress
