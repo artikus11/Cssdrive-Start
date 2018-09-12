@@ -57,13 +57,13 @@ function cssd_scripts() {
   // Theme stylesheet.
   wp_enqueue_style( 'style', get_stylesheet_uri() );
   wp_enqueue_style( 'theme', get_theme_file_uri( '/assets/css/theme.css' ), false, '', 'all' );
-	
+
   // Scripts.
   wp_enqueue_script( 'cssd-skip-link-focus-fix', get_theme_file_uri( '/assets/js/skip-link-focus-fix.js' ), array(), '1.1.4', true );
 
   if ( is_singular( 'post' ) && comments_open() && get_option( 'thread_comments' ) ) {
     wp_enqueue_script( 'comment-reply' );
-  }	
+  }
 }
 add_action( 'wp_enqueue_scripts', 'cssd_scripts' );
 
@@ -82,15 +82,9 @@ function cssd_site_logo_class( $html ) {
   // Is the border radius option enabled?
   $radius = get_theme_mod( 'custom_logo_border_radius', coblocks_defaults( 'custom_logo_border_radius' ) );
   $radius = ( false === $radius ) ? ' no-border-radius' : null;
-  
+
   $html = str_replace( 'custom-logo-link', 'custom-logo-link site-logo ' . esc_attr( $radius ), $html );
 
   return $html;
 }
 add_filter( 'get_custom_logo', 'cssd_site_logo_class' );
-
-
-
-if ( class_exists( 'Jetpack' ) ) {
-  require get_theme_file_path( '/inc/jetpack.php' );
-}
