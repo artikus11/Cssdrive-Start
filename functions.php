@@ -5,7 +5,6 @@ if ( version_compare( $GLOBALS['wp_version'], '4.7', '<' ) ) {
 }
 
 
-
 function cssd_setup() {
   load_theme_textdomain( 'cssd', get_parent_theme_file_path( '/languages' ) );
 
@@ -35,6 +34,23 @@ function cssd_setup() {
 add_action( 'after_setup_theme', 'cssd_setup' );
 
 
+function cssd_scripts() {
+  // Theme stylesheet.
+  wp_enqueue_style( 'style', get_stylesheet_uri() );
+  wp_enqueue_style( 'uikit', get_theme_file_uri( '/assets/css/uikit.min.css' ), false, '3.0.0-rc.15', 'all' );
+  wp_enqueue_style( 'theme', get_theme_file_uri( '/assets/css/theme.css' ), false, '1.0.0-beta.1', 'all' );
+
+  // Scripts.
+  wp_enqueue_script( 'cssd-skip-link-focus-fix', get_theme_file_uri( '/assets/js/skip-link-focus-fix.js' ), array(), '1.1.4', true );
+  wp_enqueue_script( 'uikit', get_theme_file_uri( '/assets/js/uikit.min.js' ), array(), '3.0.0-rc.15', true );
+  wp_enqueue_script( 'uikit-icons', get_theme_file_uri( '/assets/js/uikit-icons.min.js' ), array(), '3.0.0-rc.15', true );
+
+  if ( is_singular( 'post' ) && comments_open() && get_option( 'thread_comments' ) ) {
+    wp_enqueue_script( 'comment-reply' );
+  }
+}
+add_action( 'wp_enqueue_scripts', 'cssd_scripts' );
+
 
 function cssd_widgets_init() {
   register_sidebar(
@@ -50,32 +66,6 @@ function cssd_widgets_init() {
   );
 }
 add_action( 'widgets_init', 'cssd_widgets_init' );
-
-
-
-function cssd_scripts() {
-  // Theme stylesheet.
-  wp_enqueue_style( 'style', get_stylesheet_uri() );
-  wp_enqueue_style( 'theme', get_theme_file_uri( '/assets/css/theme.css' ), false, '', 'all' );
-
-  // Scripts.
-  wp_enqueue_script( 'cssd-skip-link-focus-fix', get_theme_file_uri( '/assets/js/skip-link-focus-fix.js' ), array(), '1.1.4', true );
-
-  if ( is_singular( 'post' ) && comments_open() && get_option( 'thread_comments' ) ) {
-    wp_enqueue_script( 'comment-reply' );
-  }
-}
-add_action( 'wp_enqueue_scripts', 'cssd_scripts' );
-
-
-
-function cssd_pingback_header() {
-  if ( is_singular() && pings_open() ) {
-    echo '<link rel="pingback" href="', bloginfo( 'pingback_url' ), '">';
-  }
-}
-add_action( 'wp_head', 'cssd_pingback_header' );
-
 
 
 function cssd_site_logo_class( $html ) {
