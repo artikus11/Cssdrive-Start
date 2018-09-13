@@ -45,10 +45,16 @@ function cssd_scripts() {
 add_action( 'wp_enqueue_scripts', 'cssd_scripts' );
 
 /*------------------------------------------------------------------
-  Подключение внешних файлов для functions.php
+  Подключаем дополнительные файлы functions.php чепер папку /inc/
 -------------------------------------------------------------------*/
 
-require get_theme_file_path( '/inc/walker-nav-menu.php' );     // Настройки основного и выпадающего меню
-require get_theme_file_path( '/inc/remove-functions.php' );    // Удаляем название [Рубрика:] в категориях
-require get_theme_file_path( '/inc/filter-username.php' );     // Фильтр имя пользователя от непригодных для использования символов
+require get_theme_file_path( '/inc/walker-nav-menu.php' ); // Настройки основного и выпадающего меню
+require get_theme_file_path( '/inc/remove-functions.php' ); // Удаляем название [Рубрика:] в категориях
+require get_theme_file_path( '/inc/filter-username.php' ); // Фильтр имя пользователя от непригодных для использования символов
 require get_theme_file_path( '/inc/list-post-thumbnail.php' ); // Колонка миниатюры в списке записей админки
+
+/*------------------------------------------------------------------
+  Интеграция ACF
+-------------------------------------------------------------------*/
+//require get_theme_file_path( '/inc/advanced-custom-fields/acf.php' ); // Интегрируем ACF в шаблон
+//require get_theme_file_path( '/inc/acf-option-page.php' ); // Настройки и произвольные поля
