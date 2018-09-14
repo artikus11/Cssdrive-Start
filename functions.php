@@ -1,8 +1,4 @@
 <?php
-	
-if ( ! defined( 'ABSPATH' ) ) {
-  exit; // Exit if accessed directly
-}
 
 /*------------------------------------------------------------------
   Настройки WordPress
@@ -10,8 +6,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 function cssd_setup() {
 	
-	// Header
-	add_theme_support( 'automatic-feed-links' );
+  // Header
+  add_theme_support( 'automatic-feed-links' );
   add_theme_support( 'title-tag' );
   
   //  Миниатюры
@@ -19,10 +15,10 @@ function cssd_setup() {
   
   // Меню
   register_nav_menus(
-		array(
-			'primary' => esc_html__( 'Primary Menu', 'cssd' ),
-		)
-	);
+    array(
+      'primary' => esc_html__( 'Primary Menu', 'cssd' ),
+    )
+  );
 	
 	// Настройки динамичного контента
 	add_theme_support(
