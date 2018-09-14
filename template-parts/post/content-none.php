@@ -1,0 +1,1 @@
+<p>На сайте еще нет постов. Но ты можешь <a href="mailto:addpost@cssdrive.ru" target="_blank"><u>стать&nbsp;первым!</u></a></p>

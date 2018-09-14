@@ -1,0 +1,17 @@
+html, body { height: 100%; background: #e5e8eb; }
+
+/*------------------------------------------------------------------
+  Gutenberg Block Images
+------------------------------------------------------------------*/
+
+.wp-block-image {
+	text-align: center;
+}
+
+figure.wp-block-image.alignwide img {
+	width: 80%;
+}
+
+figure.wp-block-image.alignfull img {
+	width: 100%;
+}
