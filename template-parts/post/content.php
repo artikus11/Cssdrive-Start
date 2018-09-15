@@ -47,8 +47,8 @@
   <?php if ( is_home() ) { ?>
 	  <div class="cssd-content-footer">
 	    <div class="uk-grid-small" uk-grid>
+		    <div><a class="uk-button uk-button-text" href="<?php the_permalink() ?>#comments"> Комментариев <span uk-icon="icon: commenting; ratio:0.9;"></span> <?php comments_number('0', '1', '%'); ?></a></div>
 	      <div><a class="uk-button uk-button-text" href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>">Подробнее</a></div>
-	      <div><a class="uk-button uk-button-text" href="<?php the_permalink() ?>#comments"> Комментариев <span uk-icon="icon: commenting; ratio:0.9;"></span> <?php comments_number('0', '1', '%'); ?></a></div>
 	    </div>
 	  </div>
   <?php } ?>

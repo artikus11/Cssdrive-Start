@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<main id="main" class="site-main uk-section uk-section-small" role="main">
+<main id="main" class="site-main uk-section uk-section-xsmall" role="main">
 	<div class="uk-container">
 		<div class="uk-grid-medium" uk-grid>
 			<div class="uk-width-expand@m">

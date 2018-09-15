@@ -7,7 +7,7 @@
 </head>
 <body <?php body_class(); ?>>
 	
-<header id="masthead" class="site-header" role="banner">
+<header id="masthead" class="site-header uk-box-shadow-small" role="banner" uk-sticky>
 	<nav class="uk-navbar-container uk-navbar-transparent">
 	  <div class="uk-container">
 	    <div class="uk-navbar" uk-navbar>
