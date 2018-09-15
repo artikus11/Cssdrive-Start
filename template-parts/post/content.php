@@ -24,7 +24,7 @@
   </div>
 	  
 	<div class="cssd-content-body">
-    <?php if ( is_front_page() && ! is_single() ) { the_excerpt(); } else { the_content(); } ?>
+    <?php if ( is_front_page() && ! is_single() ) { the_excerpt(); } else { the_excerpt(); the_content(); } ?>
 	</div>
   
   <?php if ( is_home() ) { ?>
