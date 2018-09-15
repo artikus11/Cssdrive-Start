@@ -5,17 +5,10 @@
 html, body {
 	background: #e5e8eb;
 	height: 100%;
-	font-size: 15px;
-	line-height: 20px;
 }
 
 h1, h2, h3 {
 	font-weight: bold;
-}
-
-.cssd-content p {
-  font-family: "Lora", "Georgia", serif;
-  font-smoothing: auto !important;
 }
 
 /*------------------------------------------------------------------
@@ -35,14 +28,6 @@ figure.wp-block-image.alignfull img {
 }
 
 /*------------------------------------------------------------------
-  Header
-------------------------------------------------------------------*/
-
-.site-header {
-	background: #ffffff;
-}
-
-/*------------------------------------------------------------------
   Widgets
 ------------------------------------------------------------------*/
 
@@ -53,4 +38,30 @@ h3.widget-title {
 
 .textwidget {
 
+}
+
+/*------------------------------------------------------------------
+  Header
+------------------------------------------------------------------*/
+
+.site-header {
+	background: #ffffff;
+}
+
+/*------------------------------------------------------------------
+  Content
+------------------------------------------------------------------*/
+
+.cssd-content-header {
+	padding: 15px 30px 0;
+}
+
+.cssd-content-body p {
+	padding: 0 30px;	color: #242424;
+  font-family: "Lora", "Georgia", serif;
+  font-smoothing: auto !important;
+}
+
+.cssd-content-footer {
+	padding: 0 30px 15px;
 }

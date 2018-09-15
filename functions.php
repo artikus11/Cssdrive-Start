@@ -289,6 +289,17 @@ function remove_category_url_request( $query_vars ) {
 	return $query_vars;
 }
 
+function remove_category_url_plugin_row_meta( $links, $file ) {
+	if( plugin_basename( __FILE__ ) === $file ) {
+		$links[] = sprintf(
+			'<a target="_blank" href="%s">%s</a>',
+			esc_url('#'),
+			__( 'Donate', 'remove_category_url' )
+		);
+	}
+	return $links;
+}
+
 /*------------------------------------------------------------------ 
   Удаляем лишнее из WordPress
 -------------------------------------------------------------------*/
