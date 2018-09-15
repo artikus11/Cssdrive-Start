@@ -107,7 +107,7 @@ function filter_wp_menu_args_header( $args ) {
 	if ( $args['theme_location'] === 'primary' ) {
 		$args['container']   = false;
 		$args['items_wrap']  = '<ul class="%2$s">%3$s</ul>';
-		$args['menu_class']  = 'uk-navbar-nav uk-navbar-parent-icon';
+		$args['menu_class']  = 'uk-navbar-nav';
 	}
 	return $args;
 }
@@ -143,9 +143,9 @@ function filter_nav_menu_submenu_css_class_header( $classes, $args, $depth ) {
 add_filter( 'nav_menu_link_attributes', 'filter_nav_menu_link_attributes_header', 10, 4 );
 function filter_nav_menu_link_attributes_header( $atts, $item, $args, $depth ) {
 	if ( $args->theme_location === 'primary' ) {
-		$atts['class'] = ' ';
+		$atts['class'] = '';
 		if ( $item->current ) {
-			$atts['class'] .= ' uk-active';
+			$atts['class'] .= '';
 		}
 	}
 	return $atts;
