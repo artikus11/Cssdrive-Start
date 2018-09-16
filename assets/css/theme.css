@@ -7,7 +7,7 @@ html, body {
 	height: 100%;
 }
 
-h1, h2, h3 {
+h1, h2, h3, uk-h1, uk-h2, uk-h3 {
 	font-weight: bold;
 }
 

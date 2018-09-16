@@ -21,6 +21,8 @@
 			}
 		?>
 		
+		<?php // echo do_shortcode('[rt_reading_time label="Время на чтение:" postfix="Минуты" postfix_singular="Минута"]'); ?>
+		
 		<?php if ( is_single() ) { ?>
 			<p class="uk-text-small">Последнее изменение: <?php the_modified_date('j F Y'); ?> в <?php the_modified_time(); ?> <?php edit_post_link('<span style="position: relative; top: -2px;" uk-icon="icon: cog"></span> Изменить','',''); ?></p>
 		<?php } ?>
@@ -33,7 +35,7 @@
   </div>
 	  
 	<div class="cssd-content-body">
-    <?php if ( is_front_page() && ! is_single() ) { the_excerpt(); } else { the_excerpt(); the_content(); } ?>
+    <?php if ( is_front_page() || is_category() || is_tag() || is_date() && ! is_single() ) { the_excerpt(); } else { the_excerpt(); the_content(); } ?>
 	</div>
 	
 	<?php if ( is_single() ) { ?>
@@ -54,13 +56,3 @@
   <?php } ?>
   
 </article>
-
-<?php if ( is_single() ) { ?>
-	<article class="uk-comment uk-background-default uk-margin uk-padding">
-		<?php if ( comments_open() || get_comments_number() ) : ?>
-			<div class="uk-comment-body">
-				<?php comments_template(); ?>
-			</div>
-		<?php endif; ?>
-	</article>
-<?php } ?>
