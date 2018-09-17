@@ -1,19 +1,59 @@
 /*
-Theme Name: CSSDRIVE
+Theme Name: CSSD - Start WordPress Templates
 Theme URI: http://cssdrive.ru
 Author: TheFubon
 Author URI: http://thefubon.com
-Description: Templates for WordPress
+Description: Start Templates for WordPress
 Version: 1.0.0 Beta.1
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Tags: uikit
+Tags: uikit 3, start, templates
 Text Domain: cssdrive
 
 This theme, like WordPress, is licensed under the GPL.
 Use it to make something cool, have fun, and share what you've learned with others.
 */
 
+/*------------------------------------------------------------------
+  Global Style
+------------------------------------------------------------------*/
+
+html, body {
+	background: #ffffff;
+	height: 100%;
+}
+
 /*
-	Все стили перенесены в отдельный файл /assets/css/theme.css
-*/
+ *  Формы
+ */
+textarea {
+	width: 100% !important;
+}
+
+/*------------------------------------------------------------------
+  Gutenberg Block Images
+------------------------------------------------------------------*/
+
+.wp-block-image {
+	
+}
+
+figure.wp-block-image.alignwide img {
+	
+}
+
+figure.wp-block-image.alignfull img {
+	
+}
+
+/*------------------------------------------------------------------
+  Header
+------------------------------------------------------------------*/
+
+/*
+ *  Логотип
+ */
+.custom-logo {
+	width: 45px;
+	height: 45px;
+}
