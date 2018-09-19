@@ -57,11 +57,13 @@ add_action( 'after_setup_theme', 'cssdrive_setup' );
 
 function cssdrive_scripts() {
 	
-	wp_enqueue_style( 'uikit-style', ( 'https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.16/css/uikit.min.css' ), false, '3.0.0-rc.16', 'all' );
-	wp_enqueue_style( 'cssdrive-style', get_stylesheet_uri() );
+	wp_enqueue_style( 'fonts', get_theme_file_uri( '/assets/css/fonts.css' ), false, '', 'all' );
+	wp_enqueue_style( 'uikit', get_theme_file_uri( '/assets/css/uikit.min.css' ), false, '3.0.0-rc.16', 'all' );
+	wp_enqueue_style( 'gutenberg', get_theme_file_uri( '/assets/css/gutenberg.css' ), false, '', 'all' );
+	wp_enqueue_style( 'style', get_stylesheet_uri() );
 	
-	wp_enqueue_script( 'uikit-script', ( 'https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.16/js/uikit.min.js' ), array( 'jquery' ), '3.0.0-rc.16', true );
-	wp_enqueue_script( 'uikit-icons-script', ( 'https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.16/js/uikit-icons.min.js' ), array( 'jquery' ), '3.0.0-rc.16', true );
+	wp_enqueue_script( 'uikit', get_theme_file_uri() . '/assets/js/uikit.min.js', array( 'jquery' ), '3.0.0-rc.16', false );
+	wp_enqueue_script( 'uikit-icons', get_theme_file_uri() . '/assets/js/uikit-icons.min.js', array( 'jquery' ), '3.0.0-rc.16', false );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -74,4 +76,5 @@ add_action( 'wp_enqueue_scripts', 'cssdrive_scripts' );
   Includes
 -------------------------------------------------------------------*/
 
-require get_parent_theme_file_path( '/inc/Walker_Nav_Menu.php' );
+require get_parent_theme_file_path( '/inc/walker_nav_menu.php' );
+require get_parent_theme_file_path( '/inc/posts-pagination.php' );

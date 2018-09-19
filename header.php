@@ -8,38 +8,43 @@
 </head>
 <body <?php body_class('uk-offcanvas-content'); ?>>
 
-<header id="masthead" role="banner">	
-	<nav id="site-navigation" class="uk-navbar-container" role="navigation" aria-label="<?php esc_attr_e( 'Primary', 'cssdrive' ); ?>">
-	  <div class="uk-container">
-	    <div class="uk-navbar" uk-navbar>
+<header id="masthead" class="header uk-margin" role="banner">	
+	<nav id="site-navigation" class="uk-navbar-container uk-navbar-transparent" role="navigation" aria-label="<?php esc_attr_e( 'Primary', 'cssdrive' ); ?>">
+	  <div class="uk-container uk-container-expand">
+	    <div class="uk-navbar boundary-align" uk-navbar>
 	      <div class="uk-navbar-left">
-		      <?php
-			      /*
-				     *  /template-parts/header/site-branding.php
-				     */
-			      get_template_part( 'template-parts/header/site', 'branding' ); ?>
+		      <?php get_template_part( 'template-parts/header/site', 'branding' ); ?>
 	      </div>
 	      <?php if ( has_nav_menu( 'primary' ) ) : ?>
 		      <div class="uk-navbar-center uk-visible@m">
-		        <?php
-			        /*
-				       *  /inc/Walker_Nav_Menu.php
-				       */
-			        wp_nav_menu( [ 'theme_location' => 'primary', 'walker' => new True_Walker_Nav_Menu(), ] ); ?>
+		        <?php wp_nav_menu( [ 'theme_location' => 'primary', 'link_before' => '<span>', 'link_after' => '</span>', 'walker' => new True_Walker_Nav_Menu(), ] ); ?>
 		      </div>
 	      <?php endif; ?>
 	      <div class="uk-navbar-right">
-		      <div>
-            <a class="uk-navbar-toggle" uk-search-icon href="#"></a>
-            <div style="width: 110px !important;" class="uk-drop" uk-drop="mode: click; pos: left-center; offset: 0">
-                <form role="search" method="get" class="uk-search uk-search-navbar uk-width-1-1" action="<?php echo esc_url( home_url( '/' ) ); ?>">
-                    <input class="uk-search-input" type="search" value="<?php echo get_search_query(); ?>" name="search" placeholder="<?php echo esc_attr_x( 'Search&hellip;', 'placeholder', 'cssdrive' ); ?>" autofocus>
-                </form>
-            </div>
-          </div>
-          <a class="uk-navbar-toggle" type="button" uk-toggle="target: #offcanvas-overlay">
+		      
+	        <a class="uk-navbar-toggle" uk-search-icon href="#"></a>
+	        <div class="uk-navbar-drop uk-background-secondary uk-padding-small uk-light" uk-drop="boundary: !nav; boundary-align: true; pos: bottom-justify; offset: 1; mode: click;">
+	          <div class="uk-container uk-link-text">
+	            <form role="search" method="get" class="uk-search uk-search-navbar uk-width-1-1" action="<?php echo esc_url( home_url( '/' ) ); ?>">
+	              <input class="uk-search-input" type="search" value="<?php echo get_search_query(); ?>" name="search" placeholder="<?php echo esc_attr_x( 'Search&hellip;', 'placeholder', 'cssdrive' ); ?>" autofocus>
+	            </form>	              
+	          </div>
+	        </div>
+
+		      <?php if ( is_user_logged_in() ) { ?>
+		        <!-- LOGIN ON -->
+		      	<a class="uk-navbar-toggle" href="/add-news/" uk-icon="icon: file-edit"></a>
+          	<?php $current_page = $_SERVER['REQUEST_URI']; ?>
+	          <a href="<?php echo wp_logout_url($current_page); ?>" uk-icon="icon: sign-out"></a>
+          <?php } else {   ?>
+            <!-- LOGIN -OFF -->
+          	<a href="/wp-login.php" uk-icon="icon: sign-in"></a>
+          <?php } ?>
+		      
+          <a class="uk-navbar-toggle uk-hidden@m" type="button" uk-toggle="target: #offcanvas-overlay">
 	          <span uk-navbar-toggle-icon></span>
 	        </a>
+	        
 	      </div>
 	    </div>
 	  </div>
@@ -54,4 +59,4 @@
   </div>
 </div>
 
-<div id="content">
+<div id="content" uk-height-viewport="expand: true">

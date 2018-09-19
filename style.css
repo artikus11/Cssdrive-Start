@@ -20,7 +20,6 @@ Use it to make something cool, have fun, and share what you've learned with othe
 
 html, body {
 	background: #ffffff;
-	height: 100%;
 }
 
 /*
@@ -30,25 +29,28 @@ textarea {
 	width: 100% !important;
 }
 
+/*
+ *  Иконки https://icons8.com
+ */
+.icons8 {
+	position: relative;
+	top: -1px;
+}
+
+/*
+ *  Отступы
+ */
+.uk-margin-xsmall-right {
+	margin-right: 5px;
+}
+
 /*------------------------------------------------------------------
-  Gutenberg Block Images
+  Header || header.php
 ------------------------------------------------------------------*/
 
-.wp-block-image {
-	
+.header {
+	border-bottom: 1px solid #e5e5e5;
 }
-
-figure.wp-block-image.alignwide img {
-	
-}
-
-figure.wp-block-image.alignfull img {
-	
-}
-
-/*------------------------------------------------------------------
-  Header
-------------------------------------------------------------------*/
 
 /*
  *  Логотип
@@ -56,4 +58,140 @@ figure.wp-block-image.alignfull img {
 .custom-logo {
 	width: 45px;
 	height: 45px;
+	border: 1px solid #cccccc;
 }
+
+/*
+ *  Заголовок сайта
+ */
+.uk-logo {
+	color: #111111;
+	font-weight: bold;
+}
+.uk-logo:hover,
+.uk-logo:focus {
+	color: #111111;
+}
+
+/*------------------------------------------------------------------
+  Navigation || header.php || post-navigation.php
+------------------------------------------------------------------*/
+
+.uk-navbar-nav > li > a {
+	color: #111111;
+	font-size: 18px;
+	font-weight: bold;
+}
+.uk-navbar-nav > li > a:hover,
+.uk-navbar-nav > li > a:focus {
+	color: #111111;
+}
+.uk-navbar-nav > li.uk-active > a span,
+.uk-navbar-nav > li > a:hover span,
+.uk-navbar-nav > li > a:focus span {
+	border-bottom: 3px solid #ffcc00;
+	margin-top: 3px;
+}
+
+/*------------------------------------------------------------------
+  Content || content.php
+------------------------------------------------------------------*/
+
+/*
+ *  Заголовок поста
+ */
+.entry-title {
+	font-family:'PTSansNarrowBold',Sans-Serif;
+	text-transform: uppercase;
+}
+
+.post-thumbnail {
+	box-sizing: content-box;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/*
+ *  Контент поста
+ */
+.entry-content p {
+	box-sizing: content-box;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+  
+  color: #333333;
+  font-family:'PTSerif',Sans-Serif;
+  font-size: 18px;
+}
+
+/*------------------------------------------------------------------
+  RESPONSIVE
+-------------------------------------------------------------------*/
+ 
+/* xLarge */
+@media (min-width: 1200px) and (max-width: 1599px) { /* macbook pro */
+
+}
+/* Large */
+@media (min-width: 960px) and (max-width: 1199px) { /* macbook */
+
+}
+/* Small */
+@media (min-width: 640px) and (max-width: 959px) { /* Tablet landscape */
+
+}
+/* xSmall */
+@media (min-width: 320px) and (max-width: 639px) { /* Phone landscape */
+	.post-thumbnail {
+	  padding-left: 0px;
+	  padding-right: 0px;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
