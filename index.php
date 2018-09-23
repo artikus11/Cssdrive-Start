@@ -5,7 +5,7 @@
 				<h1 class="page-title"><?php single_post_title(); ?></h1>
 			</header>
 		<?php else : ?>
-			<header class="page-header uk-container uk-container-small uk-margin">
+			<header class="page-header uk-container uk-container-small uk-margin-large">
 				<h2 class="page-title"><?php _e( 'Posts', 'cssdrive' ); ?></h2>		
 			</header>
 		<?php endif; ?>	

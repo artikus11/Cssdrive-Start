@@ -8,7 +8,7 @@
 </head>
 <body <?php body_class('uk-offcanvas-content'); ?>>
 
-<header id="masthead" class="header uk-margin" role="banner">	
+<header id="masthead" class="header" role="banner">	
 	<nav id="site-navigation" class="uk-navbar-container uk-navbar-transparent" role="navigation" aria-label="<?php esc_attr_e( 'Primary', 'cssdrive' ); ?>">
 	  <div class="uk-container uk-container-expand">
 	    <div class="uk-navbar boundary-align" uk-navbar>
@@ -33,7 +33,6 @@
 
 		      <?php if ( is_user_logged_in() ) { ?>
 		        <!-- LOGIN ON -->
-		      	<a class="uk-navbar-toggle" href="/add-news/" uk-icon="icon: file-edit"></a>
           	<?php $current_page = $_SERVER['REQUEST_URI']; ?>
 	          <a href="<?php echo wp_logout_url($current_page); ?>" uk-icon="icon: sign-out"></a>
           <?php } else {   ?>
@@ -59,4 +58,4 @@
   </div>
 </div>
 
-<div id="content" uk-height-viewport="expand: true">
+<div id="content" class="uk-section uk-section-small" uk-height-viewport="expand: true">

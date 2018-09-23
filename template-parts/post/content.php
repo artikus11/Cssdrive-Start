@@ -1,4 +1,4 @@
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class('uk-margin-large'); ?>>
 	
 	<?php if ( is_sticky() && is_home() ) { ?>
 	  <div class="uk-container uk-container-small uk-margin">
@@ -10,9 +10,9 @@
 	  <? if ( is_single() ) {
 				the_title( '<h1 class="uk-h1 entry-title">', '</h1>' );
 			} elseif ( is_front_page() && is_home() ) {
-				the_title( '<h3 class="uk-h1 entry-title"><a class="uk-link-reset" href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h3>' );
+				the_title( '<h3 class="uk-h2 entry-title"><a class="uk-link-reset" href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h3>' );
 			} else {
-				the_title( '<h2 class="uk-h1 entry-title"><a class="uk-link-reset" href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
+				the_title( '<h2 class="uk-h3 entry-title"><a class="uk-link-reset" href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
 			}
 		?>
 		<div class="entry-meta uk-margin">
@@ -36,11 +36,10 @@
 		</div><!-- .post-thumbnail -->
 	<?php endif; ?>
 	
-	<div class="entry-content uk-margin">
+	<div class="entry-content uk-margin" uk-lightbox>
 	  <?php if ( is_front_page() || is_category() || is_tag() || is_date() && ! is_single() ) { ?>
 	    <?php the_excerpt(); ?>
 	  <?php } else { ?>
-	    <?php the_excerpt(); ?>
 	    <?php the_content(); ?>
 	  <?php } ?>
 	</div><!-- .entry-content -->

@@ -64,6 +64,7 @@ function cssdrive_scripts() {
 	
 	wp_enqueue_script( 'uikit', get_theme_file_uri() . '/assets/js/uikit.min.js', array( 'jquery' ), '3.0.0-rc.16', false );
 	wp_enqueue_script( 'uikit-icons', get_theme_file_uri() . '/assets/js/uikit-icons.min.js', array( 'jquery' ), '3.0.0-rc.16', false );
+	wp_enqueue_script( 'ajax-comments', get_theme_file_uri() . '/assets/js/ajax-comments.js', array( 'jquery' ), '', false );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -76,5 +77,6 @@ add_action( 'wp_enqueue_scripts', 'cssdrive_scripts' );
   Includes
 -------------------------------------------------------------------*/
 
-require get_parent_theme_file_path( '/inc/walker_nav_menu.php' );
+require get_parent_theme_file_path( '/inc/custom-comments.php' );
 require get_parent_theme_file_path( '/inc/posts-pagination.php' );
+require get_parent_theme_file_path( '/inc/walker_nav_menu.php' );
