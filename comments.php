@@ -39,7 +39,7 @@
 						  'short_ping'  => true,
 						  'reply_text'  => __( 'Reply', 'cssdrive' ),
 						*/
-						'callback' => 'cssd_comment', // Кастомный шаблон комментариев - /inc/comments.php
+						'callback' => 'cssd_comment', // Кастомный шаблон комментариев - /inc/ajax-comments.php
 					)
 				);
 			?>

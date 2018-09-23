@@ -52,7 +52,7 @@ jQuery(function($){
 				},
 				success: function (newComment) {
 					// Если уже есть какие-то комментарии
-					if($('.commentlist').length > 0){
+					if($('.comment-list').length > 0){
 						// Если текущий комментарий является ответом
 						if($('#respond').parent().hasClass('comment')){
 							// Если уже есть какие-то ответы
@@ -67,11 +67,11 @@ jQuery(function($){
 							$("#cancel-comment-reply-link").trigger("click");
 						} else {
 							// обычный коммент
-							$('.commentlist').append(newComment);
+							$('.comment-list').append(newComment);
 						}
 					}else{
 						// если комментов пока ещё нет, тогда
-						newComment = '<ul class="commentlist">'+newComment+'</ol>';
+						newComment = '<ul class="comment-list uk-list uk-list-large uk-comment-list">'+newComment+'</ol>';
 						$('#respond').before($(newComment));
 					}
 					// очищаем поле textarea
@@ -79,7 +79,7 @@ jQuery(function($){
 				},
 				complete: function(){
 					// действие, после того, как комментарий был добавлен
-					$('#submit').removeClass('loadingform').val('Отправить');
+					$('#submit').removeClass('loadingform').val('Отправить комментарий');
 				}
 			});
 		}

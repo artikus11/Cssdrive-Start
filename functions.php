@@ -77,6 +77,6 @@ add_action( 'wp_enqueue_scripts', 'cssdrive_scripts' );
   Includes
 -------------------------------------------------------------------*/
 
-require get_parent_theme_file_path( '/inc/custom-comments.php' );
+require get_parent_theme_file_path( '/inc/ajax-comments.php' );
 require get_parent_theme_file_path( '/inc/posts-pagination.php' );
 require get_parent_theme_file_path( '/inc/walker_nav_menu.php' );
