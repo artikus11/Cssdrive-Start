@@ -27,7 +27,7 @@ jQuery(function($){
 		var comment = $("#comment").checka();
 		// небольшое условие для того, чтобы исключить двойные нажатия на кнопку отправки
 		// в это условие также входит валидация полей
-		if (!$('#submit').hasClass('loadingform') && !$("#author").hasClass('error') && !$("#email").hasClass('error') && !$("#comment").hasClass('error')){
+		if (!$('#submit').hasClass('loadingform') && !$("#author").hasClass('.error') && !$("#email").hasClass('.error') && !$("#comment").hasClass('.error')){
 			$.ajax({
 				type : 'POST',
 				url : 'http://' + location.host + '/wp-admin/admin-ajax.php',
@@ -52,7 +52,7 @@ jQuery(function($){
 				},
 				success: function (newComment) {
 					// Если уже есть какие-то комментарии
-					if($('.comment-list').length > 0){
+					if($('.commentlist').length > 0){
 						// Если текущий комментарий является ответом
 						if($('#respond').parent().hasClass('comment')){
 							// Если уже есть какие-то ответы
@@ -67,11 +67,11 @@ jQuery(function($){
 							$("#cancel-comment-reply-link").trigger("click");
 						} else {
 							// обычный коммент
-							$('.comment-list').append(newComment);
+							$('.commentlist').append(newComment);
 						}
 					}else{
 						// если комментов пока ещё нет, тогда
-						newComment = '<ul class="comment-list uk-list uk-list-large uk-comment-list">'+newComment+'</ol>';
+						newComment = '<ul class="commentlist uk-list uk-list-large uk-comment-list">'+newComment+'</ol>';
 						$('#respond').before($(newComment));
 					}
 					// очищаем поле textarea
@@ -86,3 +86,21 @@ jQuery(function($){
 		return false;
 	});
 });
+
+// удаляем сообщение после появления
+jQuery(function($){
+	$("#submit").click(function() {
+	  setTimeout(function () { 
+	    UIkit.alert('.uk-alert').close()
+	  }.bind(this), 2000);
+	});
+});
+
+
+
+
+
+
+
+
+

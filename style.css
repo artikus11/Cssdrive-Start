@@ -147,15 +147,28 @@ textarea {
 }
 
 
-/*------------------------------------------------------------------
-  Comments || comments.php
-------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------
+  Ajax Comments || comments.php & /inc/ajax-comments.php & /assets/js/ajax-comments.js
+---------------------------------------------------------------------------------------*/
+
+.comments-container {
+	border-top: 1px solid #e5e5e5;
+}
+
+/*
+ *  Аватарка комментария
+ */
+.uk-comment-avatar .avatar {
+	-webkit-border-radius: 50px;
+	-moz-border-radius: 50px;
+	border-radius: 50px;
+}
 
 /*
  *  Ошибка! Если поля не заполнены
  */
-input.error, textarea.error{
-    border: 1px solid #fe0000; /* или background:red или любой другой цвет, который больше вписывается в дизайн вашего блога */
+input.error, textarea.error {
+  border: 1px solid #fe0000;
 }
 
 /*

@@ -15,20 +15,20 @@ function cssd_comment( $comment, $args, $depth ) {
     default :
     $commentnumber++; ?>
       
-    <li <?php comment_class(); ?> id="li-comment-<?php comment_ID(); ?>">   
+    <li <?php comment_class(); ?> id="li-comment-<?php comment_ID(); ?>">
     	<div id="comment-<?php comment_ID(); ?>" class="comment-body">
         <article id="comment-<?php comment_ID(); ?>" class="uk-comment uk-visible-toggle">
           <header class="comment-header uk-comment-header uk-position-relative">
             <div class="uk-grid-small uk-flex-middle" uk-grid>
               <div class="uk-width-auto">
                   <div  class="uk-comment-avatar">
-                    <?php $avatar_size = 60;  if ( '0' != $comment->comment_parent ) $avatar_size = 60; echo get_avatar( $comment, $avatar_size ); ?>
+                    <?php $avatar_size = 48;  if ( '0' != $comment->comment_parent ) $avatar_size = 48; echo get_avatar( $comment, $avatar_size ); ?>
                   </div>
               </div>
               <div class="uk-width-expand">
                 <h4 class="uk-comment-title uk-margin-remove">
                   <span class="commentnumber"><?php echo '#'.$commentnumber; ?></span>
-                  <?php printf(  '<cite class="fn">%s</cite>', get_comment_author_link() ); ?>
+                  <?php printf( '<cite class="fn">%s</cite>', get_comment_author_link() ); ?>
                   <?php if($comment->comment_parent){ $comment_parent_href = htmlspecialchars(get_comment_link( $comment->comment_parent )); $comment_parent = get_comment($comment->comment_parent); ?>
 			              <span class="rep-authorcom uk-text-meta"><?php _e( '@ Answer for:', 'cssdrive' ); ?> <?php echo $comment_parent->comment_author;?></span>
 			            <?php } ?>
@@ -92,42 +92,56 @@ add_filter('comment_form_fields', 'cssd_reorder_comment_fields' );
 
 function cssd_custom_fields($fields) {
 
-    $commenter = wp_get_current_commenter();
-    $req = get_option( 'require_name_email' );
-    $aria_req = ( $req ? " aria-required='true'" : ’ );
+  $commenter = wp_get_current_commenter();
+  $req = get_option( 'require_name_email' );
+  $aria_req = ( $req ? "aria-required='true'" : ’ );
+	
+  $fields[ 'author' ] = '
+  <div class="uk-child-width-1-3@s uk-grid-small" uk-grid>
+  <p class="comment-form-author">'.
+    '<label for="author">' . __( 'Name', 'cssdrive' ) . '</label>'.
+    ( $req ? '<span class="required">*</span> ' : ’ ).
+    '<input id="author" class="uk-input" name="author" type="text" required value="'. esc_attr( $commenter['comment_author'] ) .
+    '"  tabindex="1"' . $aria_req . '></p>';
 
-    $fields[ 'author' ] = '<p class="comment-form-author">'.
-      '<label for="author">' . __( 'Name', 'cssdrive' ) . '</label>'.
-      ( $req ? '<span class="required">*</span>' : ’ ).
-      '<input id="author" class="uk-input" name="author" type="text" value="'. esc_attr( $commenter['comment_author'] ) .
-      '" size="30" tabindex="1"' . $aria_req . ' /></p>';
+  $fields[ 'email' ] = '<p class="comment-form-email">'.
+    '<label for="email">' . __( 'Email', 'cssdrive' ) . '</label>'.
+    ( $req ? '<span class="required">*</span>' : ’ ).
+    '<input id="email" class="uk-input" name="email" type="text" value="'. esc_attr( $commenter['comment_author_email'] ) .
+    '" tabindex="2"' . $aria_req . ' ></p>';
 
-    $fields[ 'email' ] = '<p class="comment-form-email">'.
-      '<label for="email">' . __( 'Email', 'cssdrive' ) . '</label>'.
-      ( $req ? '<span class="required">*</span>' : ’ ).
-      '<input id="email" class="uk-input" name="email" type="text" value="'. esc_attr( $commenter['comment_author_email'] ) .
-      '" size="30"  tabindex="2"' . $aria_req . ' /></p>';
+  $fields[ 'url' ] = '<p class="comment-form-url">'.
+    '<label for="url">' . __( 'Website', 'cssdrive' ) . '</label>'.
+    '<input id="url" class="uk-input" name="url" type="text" value="'. esc_attr( $commenter['comment_author_url'] ) .
+    '" tabindex="3" /></p></div>';
 
-    $fields[ 'url' ] = '<p class="comment-form-url">'.
-      '<label for="url">' . __( 'Website', 'cssdrive' ) . '</label>'.
-      '<input id="url" class="uk-input" name="url" type="text" value="'. esc_attr( $commenter['comment_author_url'] ) .
-      '" size="30"  tabindex="3" /></p>';
-
-    $fields[ 'phone' ] = '<p class="comment-form-phone">'.
-      '<label for="phone">' . __( 'Phone', 'cssdrive' ) . '</label>'.
-      '<input id="phone" class="uk-input" name="phone" type="text" /></p>';
+  $fields[ 'phone' ] = '<p class="comment-form-phone">'.
+    '<label for="phone">' . __( 'Phone', 'cssdrive' ) . '</label>'.
+    '<input id="phone" class="uk-input" name="phone" type="text" /></p>';
       
   return $fields;
 }
 add_filter('comment_form_default_fields', 'cssd_custom_fields');
 
 /*------------------------------------------------------------------
+  Отключаем ненужные поля
+------------------------------------------------------------------*/
+
+function remove_comment_fields($fields) {
+unset($fields['phone']);
+return $fields;
+}
+add_filter('comment_form_default_fields', 'remove_comment_fields');
+
+/*------------------------------------------------------------------
   Поля формы TEXTAREA
 ------------------------------------------------------------------*/
 
 function cssd_comment_form_text_area($arg) {
-    $arg['comment_field'] = '<p class="comment-form-comment"><label for="comment">' . __( 'Comment*', 'cssdrive' ) . '</label><textarea id="comment" class="uk-textarea" name="comment" rows="8" aria-required="true"></textarea></p>';
-    return $arg;
+	$req = get_option( 'require_name_email' );
+	$aria_req = ( $req ? "aria-required='true'" : ’ );
+  $arg['comment_field'] = '<p class="comment-form-comment uk-margin"><label for="comment">' . __( 'Comment*', 'cssdrive' ) . '</label><textarea id="comment" class="uk-textarea uk-resize-vertical uk-width-1-1" name="comment" rows="6" ' . $aria_req . '></textarea></p>';
+  return $arg;
 }
 add_filter('comment_form_defaults', 'cssd_comment_form_text_area');
 
@@ -254,13 +268,13 @@ function true_add_ajax_comment(){
  	 */
 	if ( get_option('require_name_email') && !$user->exists() ) {
 		if ( 6 > strlen($comment_author_email) || '' == $comment_author )
-			wp_die( 'Ошибка: заполните необходимые поля (Имя, Email).' );
+			wp_die( '<div class="uk-alert-danger uk-margin-small" uk-alert><a class="uk-alert-close" uk-close></a><p>' . 'Ошибка: заполните необходимые поля (Имя, Email).' . '</p></div>');
 		elseif ( !is_email($comment_author_email))
-			wp_die( 'Ошибка: введенный вами email некорректный.' );
+			wp_die( '<div class="uk-alert-danger uk-margin-small" uk-alert><a class="uk-alert-close" uk-close></a><p>' . 'Ошибка: введенный вами email некорректный.' . '</p></div>');
 	}
 
-	if ( '' == trim($comment_content) ||  '<p><br></p>' == $comment_content )
-		wp_die( 'Вы забыли про комментарий.' );
+	if ( '' == trim($comment_content) ||  '' == $comment_content )
+		wp_die( '<div class="uk-alert-danger uk-margin-small" uk-alert><a class="uk-alert-close" uk-close></a><p>' . 'Вы забыли про комментарий.' . '</p></div>' );
 
 	/*
 	 * добавляем новый коммент и сразу же обращаемся к нему

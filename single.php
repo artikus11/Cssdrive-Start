@@ -7,7 +7,9 @@
 					<?php get_template_part( 'template-parts/post/content', get_post_format() ); ?>
 					
 					<?php if ( comments_open() || get_comments_number() ) : ?>
-					  <?php comments_template(); ?>
+					  <div class="comments-container uk-section uk-section-small">
+						  <?php comments_template(); ?>
+					  </div>
 					<?php endif; ?>
 					
 				<?php endwhile; ?>
